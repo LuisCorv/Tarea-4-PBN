@@ -13,7 +13,6 @@ grafos :: grafos (int n_nodos){     //si es vacio, el n_nodos=0
         } 
         this->n_nodos=numero_nodos;  
         this->largo= numero_nodos.size();
-        imprimir_nodos();
 }
 
 
@@ -41,7 +40,6 @@ void grafos :: add_arco (int d ,int h){
                                 //crear un arco entre un nodo y otro , y guardarlo en la 'lista' de arcos
                                 string nombre_arco = to_string(d)+","+ to_string(h);
                                 arco_nodo.push(nombre_arco);
-                                imprimir_arcos();
                         }
                         else {
                         cout << "El segundo valor ingresado no existe entre los nodos creados" << endl;
@@ -58,12 +56,11 @@ int grafos :: add_nodo (){
         int nuevo_nodo=largo;
         n_nodos.push(largo);
         this->largo=n_nodos.size();
-        imprimir_nodos();
         return nuevo_nodo;
 }
 
 
-//imprimir 'si existe un arco entre d y h' si es true o un 'no existe arco entre d y h' si es false
+//eliminar esta funcion una vez que el resto del codigo funcione en python
 void grafos :: imprimir_si_hay_arco(int d, int h){
         bool valor =hay_arco(d,h);
         if (valor==true){
@@ -104,7 +101,7 @@ bool grafos :: hay_arco (int d , int h){
 }
 
 
-//imprimir 'si existe un camino entre d y h' si es true o un 'no existe camino entre d y h' si es false
+//eliminar esta funcion una vez que el resto del codigo funcione en python
 void grafos :: imprimir_si_hay_camino(int d, int h){
         bool valor =hay_camino(d,h);
         if (valor==true){
@@ -158,7 +155,7 @@ bool grafos :: hay_camino (int d ,int h){
         return false;
 }
 
-
+//eliminar esta funcion una vez que el resto del codigo funcione en python
 void grafos :: imprimir_nodos(){
         queue <int> numeros_nodos= n_nodos;
         cout<< "Los nodos registrados hasta el momento son: { ";
@@ -172,7 +169,7 @@ void grafos :: imprimir_nodos(){
         }
         cout << " }"<<endl;
 }
-
+//eliminar esta funcion una vez que el resto del codigo funcione en python
 void grafos :: imprimir_arcos(){
         queue <string> numeros_arcos= arco_nodo;
         cout<< "Los arcos registrados hasta el momento son: { ";
