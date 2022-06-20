@@ -1,7 +1,20 @@
 CC=g++
-flags= -std=c++11 -Wall -Wextra -Wundef -Werror -Wuninitialized -Winit-self
+flags= 
+
 exe=prog
 lib=libgrafo.dll
+
+swig =C:\Users\macaf\Desktop\Visual Studio Code\swigwin-4.0.2\swigwin-4.0.2
+ruta_python=C:\Users\macaf\anaconda3\pkgs\python-3.7.6-h60c2a47_2
+
+
+#Arreglar la parte del -shared, para que si logre realizarlo
+_grafo.pyd:	grafo_wrap.cxx 	grafos.o
+	$(CC) -fPIC -c grafo_wrap.cxx -o grafo_wrap.o -I$(ruta_python)/include
+	$(CC) -shared grafo_wrap.o grafos.o -o _grafo.pyd -L$(ruta_python) -lpython37
+
+grafo_wrap.cxx : grafo.i grafos.h
+	$(swig)/swig -python -c++ grafo.i
 
 #Una vez que el codigo funcione en c++, eliminar esta parte del archivo main y hacer que corra sin el
 $(exe): main.o $(lib)
@@ -10,11 +23,14 @@ $(exe): main.o $(lib)
 $(lib): grafos.o 
 	$(CC) $(flags) -shared grafos.o -o $(lib)
 
- grafos.o: grafos.cpp grafos.h
+
+grafos.o: grafos.cpp grafos.h
 	$(CC) $(flags) -fPIC -c grafos.cpp -o grafos.o
 
-run: $(exe)
+run_main: $(exe)
 	.\$(exe)
 
+run: _grafo.pyd
+
 clean:
-	del *.o $(exe).exe *.dll
+	del *.o *.dll *.pyd *.cxx  $(exe).exe

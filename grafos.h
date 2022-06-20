@@ -10,8 +10,7 @@ private:
     queue <string> arco_nodo;      // deberia ser una 'lista' de los arcos entre nodos
     int largo;
 
-    bool hay_arco(int,int);         //Revisa si existe o no un arco entre 2 nodos
-    bool hay_camino(int,int);       //Revisa si existe o no un camino entre 2 nodos
+           
 
 public:
     grafos(int);    //Constructor de la clase con parametros
@@ -21,6 +20,8 @@ public:
     int add_nodo();         //Crea un nodo
     void imprimir_si_hay_arco(int,int);     //imprimir si existe o no un arco
     void imprimir_si_hay_camino(int,int);     //imprimir si existe o no un arco
+    bool hay_arco(int,int);         //Revisa si existe o no un arco entre 2 nodos
+    bool hay_camino(int,int);       //Revisa si existe o no un camino entre 2 nodos
 
     void imprimir_nodos();
     void imprimir_arcos();
