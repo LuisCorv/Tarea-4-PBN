@@ -1,4 +1,4 @@
-from grafo import *
+import grafo as graf
 
 #Funcion para construir frases dependiendo de una
 #variable booleana.
@@ -9,7 +9,7 @@ def castellano(booleano):
         return "no "
     return ""
 
-g=grafo(3)
+g=graf(3)
 g.add_arco(1,2)
 g.add_nodo()
 g.add_arco(2,3)
